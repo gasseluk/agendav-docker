@@ -52,6 +52,8 @@ COPY settings.php /var/www/agendav/web/config/settings.php
 COPY run.sh /usr/local/bin/run.sh
 COPY pre-env.sh /tmp/pre-env.sh
 
+RUN mkdir -p "$AGENDAV_LOG_DIR" && chmod 777 "$AGENDAV_LOG_DIR"
+
 RUN chmod +x /tmp/pre-env.sh && \
     echo 'date.timezone = "AGENDAV_TIMEZONE"' >> /etc/php/5.6/cli/php.ini && \
     echo 'date.timezone = "AGENDAV_TIMEZONE"' >> /etc/php/5.6/apache2/php.ini && \
